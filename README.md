@@ -1,3 +1,10 @@
+JustWatch-Fork of deepmap/oapi-codegen
+--------------------------------------
+In order to get some features in we created a Fork of this generator.
+The Changes done include but are not limited to
+- Support for Validator-Annotations
+- Different Default Values (`integer` will default to `int64` and not `int32`)
+
 OpenAPI Client and Server Code Generator
 ----------------------------------------
 
@@ -29,7 +36,7 @@ write a lot of boilerplate code to perform all the marshalling and unmarshalling
 into objects which match the OpenAPI 3.0 definition. The code generator in this
 directory does a lot of that for you. You would run it like so:
 
-    go get github.com/Neokil/oapi-codegen/cmd/oapi-codegen
+    go get github.com/justwatchcom/oapi-codegen/cmd/oapi-codegen
     oapi-codegen petstore-expanded.yaml  > petstore.gen.go
 
 Let's go through that `petstore.gen.go` file to show you everything which was
@@ -204,8 +211,8 @@ func RegisterHandlersWithOptions(router *gin.Engine, si ServerInterface, options
 ```go
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/Neokil/oapi-codegen/examples/petstore-expanded/gin/api"
-	middleware "github.com/Neokil/oapi-codegen/pkg/gin-middleware"
+	"github.com/justwatchcom/oapi-codegen/examples/petstore-expanded/gin/api"
+	middleware "github.com/justwatchcom/oapi-codegen/pkg/gin-middleware"
 )
 
 type PetStoreImpl struct {}
@@ -421,7 +428,7 @@ which help you to use the various OpenAPI 3 Authentication mechanism.
 
 ```
     import (
-        "github.com/Neokil/oapi-codegen/pkg/securityprovider"
+        "github.com/justwatchcom/oapi-codegen/pkg/securityprovider"
     )
 
     func CreateSampleProviders() error {
@@ -547,7 +554,7 @@ in the openapi spec.
 Since `go generate` commands must be a single line, all the options above can make
 them pretty unwieldy, so you can specify all of the options in a configuration
 file via the `--config` option. Please see the test under
-[`/internal/test/externalref/`](https://github.com/Neokil/oapi-codegen/blob/master/internal/test/externalref/externalref.cfg.yaml)
+[`/internal/test/externalref/`](https://github.com/justwatchcom/oapi-codegen/blob/master/internal/test/externalref/externalref.cfg.yaml)
 for an example. The structure of the file is as follows:
     
 ```yaml
@@ -558,11 +565,11 @@ generate:
   - types
   - skip-prune
 import-mapping:
-  ./packageA/spec.yaml: github.com/Neokil/oapi-codegen/internal/test/externalref/packageA
-  ./packageB/spec.yaml: github.com/Neokil/oapi-codegen/internal/test/externalref/packageB
+  ./packageA/spec.yaml: github.com/justwatchcom/oapi-codegen/internal/test/externalref/packageA
+  ./packageB/spec.yaml: github.com/justwatchcom/oapi-codegen/internal/test/externalref/packageB
 ```
 
-Have a look at [`cmd/oapi-codegen/oapi-codegen.go`](https://github.com/Neokil/oapi-codegen/blob/master/cmd/oapi-codegen/oapi-codegen.go#L48) 
+Have a look at [`cmd/oapi-codegen/oapi-codegen.go`](https://github.com/justwatchcom/oapi-codegen/blob/master/cmd/oapi-codegen/oapi-codegen.go#L48) 
 to see all the fields on the configuration structure.
 
 ### Import Mappings
@@ -668,7 +675,7 @@ In order to support the pattern-constraint a custom validator needs to be regist
 ```
 import (
     "github.com/go-playground/validator/v10"
-    pv "github.com/Neokil/oapi-codegen/pkg/validator"
+    pv "github.com/justwatchcom/oapi-codegen/pkg/validator"
 )
 
 // get a preconfigured validator

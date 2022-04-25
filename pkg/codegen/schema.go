@@ -368,7 +368,7 @@ func resolveType(schema *openapi3.Schema, path []string, outSchema *Schema, incl
 		} else if f == "uint" {
 			outSchema.GoType = "uint"
 		} else if f == "" {
-			outSchema.GoType = "int"
+			outSchema.GoType = "int64"
 		} else {
 			return fmt.Errorf("invalid integer format: %s", f)
 		}

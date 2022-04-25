@@ -20,7 +20,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/Neokil/oapi-codegen/pkg/types"
+	"github.com/justwatchcom/oapi-codegen/pkg/types"
 )
 
 // This function takes a string, and attempts to assign it to the destination

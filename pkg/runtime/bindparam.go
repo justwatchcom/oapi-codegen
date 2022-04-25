@@ -23,7 +23,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Neokil/oapi-codegen/pkg/types"
+	"github.com/justwatchcom/oapi-codegen/pkg/types"
 )
 
 // This function binds a parameter as described in the Path Parameters

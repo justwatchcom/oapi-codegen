@@ -25,8 +25,8 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"github.com/Neokil/oapi-codegen/pkg/codegen"
-	"github.com/Neokil/oapi-codegen/pkg/util"
+	"github.com/justwatchcom/oapi-codegen/pkg/codegen"
+	"github.com/justwatchcom/oapi-codegen/pkg/util"
 )
 
 func errExit(format string, args ...interface{}) {

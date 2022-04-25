@@ -11,7 +11,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Neokil/oapi-codegen/pkg/types"
+	"github.com/justwatchcom/oapi-codegen/pkg/types"
 )
 
 func marshalDeepObject(in interface{}, path []string) ([]string, error) {
