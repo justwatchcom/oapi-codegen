@@ -94,12 +94,12 @@ func genResponsePayload(operationID string) string {
 }
 
 // genResponseUnmarshal generates unmarshaling steps for structured response payloads
-func genResponseUnmarshal(op *OperationDefinition) string {
+func genResponseUnmarshal(op *OperationDefinition, includeValidation bool) string {
 	var handledCaseClauses = make(map[string]string)
 	var unhandledCaseClauses = make(map[string]string)
 
 	// Get the type definitions from the operation:
-	typeDefinitions, err := op.GetResponseTypeDefinitions()
+	typeDefinitions, err := op.GetResponseTypeDefinitions(includeValidation)
 	if err != nil {
 		panic(err)
 	}
@@ -208,7 +208,7 @@ func genResponseUnmarshal(op *OperationDefinition) string {
 	}
 
 	// Now build the switch statement in order of most-to-least specific:
-	// See: https://github.com/deepmap/oapi-codegen/issues/127 for why we handle this in two separate
+	// See: https://github.com/justwatchcom/oapi-codegen/issues/127 for why we handle this in two separate
 	// groups.
 	fmt.Fprintf(buffer, "switch {\n")
 	for _, caseClauseKey := range SortedStringKeys(handledCaseClauses) {
@@ -237,8 +237,8 @@ func genResponseTypeName(operationID string) string {
 	return fmt.Sprintf("%s%s", UppercaseFirstCharacter(operationID), responseTypeSuffix)
 }
 
-func getResponseTypeDefinitions(op *OperationDefinition) []ResponseTypeDefinition {
-	td, err := op.GetResponseTypeDefinitions()
+func getResponseTypeDefinitions(op *OperationDefinition, includeValidation bool) []ResponseTypeDefinition {
+	td, err := op.GetResponseTypeDefinitions(includeValidation)
 	if err != nil {
 		panic(err)
 	}

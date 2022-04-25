@@ -6,9 +6,9 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/deepmap/oapi-codegen/examples/authenticated-api/echo/api"
-	"github.com/deepmap/oapi-codegen/pkg/middleware"
 	"github.com/getkin/kin-openapi/openapi3filter"
+	"github.com/justwatchcom/oapi-codegen/examples/authenticated-api/echo/api"
+	"github.com/justwatchcom/oapi-codegen/pkg/middleware"
 	"github.com/labstack/echo/v4"
 )
 
